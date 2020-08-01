@@ -205,3 +205,111 @@ int main(){
 }
 
 ``` 
+
+### 8. 
+
+输入描述:
+
+输入有两行，第一行n。
+第二行是n个空格隔开的字符串
+
+输出描述:
+
+输出一行排序后的字符串，空格隔开，无结尾空格
+
+```C++
+#include <iostream>
+#include <vector>
+#include<string>
+#include<algorithm>
+
+int main(){
+    int num;
+    std::cin >> num;
+    std::string str;
+    std::vector<std::string> bucket;
+    
+    while(num--){
+        std::cin >> str;
+        bucket.push_back(str);
+    }
+    
+    sort(bucket.begin(), bucket.end());
+    
+    for(int i = 0; i< bucket.size(); i++){
+        if(i==0){
+            std::cout<<bucket[0];
+        }
+        else
+            std::cout<<' '<<bucket[i];
+    }
+    
+    return 0;
+}
+```
+
+### 9.
+
+输入描述:
+
+多个测试用例，每个测试用例一行。
+
+每行通过空格隔开，有n个字符，n＜100
+
+输出描述:
+
+对于每组测试用例，输出一行排序过的字符串，每个字符串通过空格隔开
+
+```C++
+#include <iostream>
+#include <set>
+#include <string>
+
+int main(){
+    std::set<std::string> line;
+    std::string str;
+    
+    while (std::cin >> str) {
+        line.insert(str);
+        if (std::cin.get() == '\n') {
+            for (auto iter = line.begin(); iter != line.end(); ++iter) {
+                std::cout << *iter << " ";
+            }
+            std::cout << std::endl;
+            line.clear();
+        }
+    }
+    
+    return 0;
+}
+```
+
+### 10.
+
+输入描述:
+
+多个测试用例，每个测试用例一行。
+每行通过','隔开，有n个字符，n＜100
+
+输出描述:
+
+对于每组用例输出一行排序后的字符串，用','隔开，无结尾空格
+
+```C++
+#include<bits/stdc++.h>
+
+int main(){
+    std::vector<std::string> res;
+    std::string a,b;
+    while(getline(std::cin,a)){
+        std::stringstream x(a);
+        while(getline(x,b,','))
+            res.push_back(b);
+        sort(res.begin(),res.end());
+        for(int i=0;i<res.size()-1;++i)
+            std::cout<<res[i]<<',';
+        std::cout<<res.back()<<std::endl;
+        res.clear();
+    }
+}
+```
